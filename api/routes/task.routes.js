@@ -43,10 +43,10 @@ router.get('/task/:clientName', authorize, async (req, res, next) => {
         const tasksByClient = await taskSchema.aggregate([
             {
                 $lookup: {
-                    from: 'users', // Name of the collection to join
-                    localField: 'client', // Field in the 'tasks' schema to match
-                    foreignField: '_id', // Field in the 'users' collection to match
-                    as: 'clientDetails' // Where to store the matched client details
+                    from: 'users',
+                    localField: 'client',
+                    foreignField: '_id',
+                    as: 'clientDetails'
                 }
             },
             {
